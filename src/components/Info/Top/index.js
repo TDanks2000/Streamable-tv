@@ -28,6 +28,7 @@ const InfoTop = (props) => {
     id,
     backdrop_path: cover,
     type,
+    isMobile,
   } = props;
   const navigation = useNavigation();
 
@@ -56,8 +57,8 @@ const InfoTop = (props) => {
   image = utils.getPosterUrl(image, "original");
   cover = utils.getPosterUrl(cover, "original");
   return (
-    <InfoTopContainer>
-      <InfoTopImageContainer>
+    <InfoTopContainer isMobile={isMobile}>
+      <InfoTopImageContainer isMobile={isMobile}>
         <InfoTopImage source={{ uri: cover }}>
           <GoBackContainer onPress={() => navigation.goBack()}>
             <GoBackIcon />
@@ -65,12 +66,14 @@ const InfoTop = (props) => {
           <InfoTopImageWrapper />
         </InfoTopImage>
       </InfoTopImageContainer>
-      <InfoTopPosterContainer>
-        <InfoTopPosterImageWrapper>
+      <InfoTopPosterContainer isMobile={isMobile}>
+        <InfoTopPosterImageWrapper isMobile={isMobile}>
           <InfoTopPoster source={{ uri: image }} />
         </InfoTopPosterImageWrapper>
-        <InfoTopWrapper>
-          <InfoTopTitle numberOfLines={1}>{title || name}</InfoTopTitle>
+        <InfoTopWrapper isMobile={isMobile}>
+          <InfoTopTitle numberOfLines={1} isMobile={isMobile}>
+            {title || name}
+          </InfoTopTitle>
           {type !== "movie" ? (
             <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode>
           ) : null}

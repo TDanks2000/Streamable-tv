@@ -1,3 +1,6 @@
+import Description from "./Desc";
 import Focusable from "./Focusable";
+import MetaInformation from "./MetaInformation";
+import Pill from "./Pill";
 
-export { Focusable };
+export { Focusable, MetaInformation, Pill, Description };

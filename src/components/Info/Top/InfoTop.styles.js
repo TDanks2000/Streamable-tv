@@ -22,7 +22,7 @@ export const GoBackIcon = styled(Icon).attrs(() => ({
 
 export const InfoTopImageContainer = styled.View`
   width: 100%;
-  height: 350px;
+  height: ${({ isMobile }) => (isMobile ? "250px" : "350px")};
 `;
 
 export const InfoTopImage = styled.ImageBackground`
@@ -54,14 +54,14 @@ export const WatchedAmount = styled.View`
 export const InfoTopPosterContainer = styled.View`
   display: flex;
   flex-direction: row;
-  margin-top: -150px;
+  margin-top: ${({ isMobile }) => (isMobile ? "-88px" : "-150px")};
   width: 100%;
-  height: 350px;
+  height: ${({ isMobile }) => (isMobile ? "184px" : "350px")};
   padding: 0 25px;
 `;
 
 export const InfoTopPosterImageWrapper = styled.View`
-  width: 250px;
+  width: ${({ isMobile }) => (isMobile ? "122px" : "250px")};
   height: 100%;
   // border-radius: 8px;
   // overflow: hidden;
@@ -79,7 +79,7 @@ export const InfoTopPoster = styled.Image`
 `;
 
 export const InfoTopWrapper = styled.View`
-  margin-top: 105px;
+  margin-top: ${({ isMobile }) => (isMobile ? "53px" : "155px")};
   padding: 0 25px;
   width: 70%;
 `;
@@ -88,7 +88,7 @@ export const InfoTopTitle = styled.Text`
   font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
-  font-size: 35px;
+  font-size: ${({ isMobile }) => (isMobile ? "20px" : "25px")};
   margin-bottom: 5px;
 `;
 
@@ -101,7 +101,7 @@ export const InfoTopEpisode = styled.Text`
 `;
 
 export const InfoTopButtons = styled.View`
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -112,7 +112,7 @@ export const InfoTopPlayButton = styled.TouchableOpacity`
   padding: 5px 0;
   background: ${({ theme }) => theme.base.mainColor};
   border-radius: 8px;
-  width: 100px;
+  width: 70px;
   // width: 100%;
   display: flex;
   flex-direction: row;
@@ -124,5 +124,5 @@ export const InfoTopPlayButtonText = styled.Text`
   font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 16px;
 `;
