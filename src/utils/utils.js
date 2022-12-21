@@ -1,3 +1,5 @@
+import normalize from "normalize-strings";
+
 function compareTwoStrings(first, second) {
   first = first.replace(/\s+/g, "");
   second = second.replace(/\s+/g, "");
@@ -68,7 +70,31 @@ function areArgsValid(mainString, targetStrings) {
 }
 
 const stripNonText = (str) => {
-  return str.replace(/[^a-zA-Z0-9 ]/g, "");
+  return normalize(str).replace(/[^a-zA-Z0-9 ]/g, "");
 };
 
-export { compareTwoStrings, findBestMatch, stripNonText };
+const getType = (type) => {
+  return type?.toLowerCase().includes("tv") ? "tv" : "movie";
+};
+
+const baseImageUrl = {
+  w92: "https://image.tmdb.org/t/p/w92",
+  w154: "https://image.tmdb.org/t/p/w154",
+  w185: "https://image.tmdb.org/t/p/w185",
+  w342: "https://image.tmdb.org/t/p/w342",
+  w500: "https://image.tmdb.org/t/p/w500",
+  w780: "https://image.tmdb.org/t/p/w780",
+  original: "https://image.tmdb.org/t/p/original",
+};
+
+const getPosterUrl = (path, size) => {
+  return `${baseImageUrl[size]}${path}`;
+};
+
+export {
+  compareTwoStrings,
+  findBestMatch,
+  stripNonText,
+  getType,
+  getPosterUrl,
+};

@@ -5,7 +5,6 @@ const Focusable = ({ children, onPress }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const setFocus = (type) => {
-    console.log("test");
     setIsFocused(type);
   };
 

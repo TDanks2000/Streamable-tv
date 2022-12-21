@@ -1,15 +1,15 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Recent, Trending } from "../../containers";
+import { Container } from "../screen.styles";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={{ marginTop: 25 }}>
+    <Container>
       <Trending type="movies" />
       <Trending type="tv" />
       <Recent type={"movies"} />
       <Recent type={"tv"} />
-    </SafeAreaView>
+    </Container>
   );
 };
 

@@ -7,26 +7,41 @@ const { tmdb_api_key } = Constants?.expoConfig?.extra;
 const flixhq = new MOVIES.FlixHQ();
 
 export const findMatchFromTitle = async (query, type) => {
+  // Query is required
+  if (!query) throw new Error("Query is required");
+  // Type is required
+  if (!type) throw new Error("Type is required");
+
   //find match from title using tmdb api
   type = type?.toLowerCase().includes("tv") ? "tv" : "movie";
+
+  // Store the raw query for later use
   const rawQuery = query;
+  // clean the query
   query = utils.stripNonText(query);
 
+  //create url
   const url = `https://api.themoviedb.org/3/search/${type}?api_key=${tmdb_api_key}&query=${query}&language=en-US&page=1&include_adult=false`;
 
+  // get the data from tmdb
   const { data } = await axios.get(url);
+
+  // get the results
   const { results } = data;
 
   const matches = [];
+
+  // compare each result with the query
   await results.map((result) => {
-    const { title, name, id } = result;
+    const { title, name } = result;
     const match = utils.compareTwoStrings(title || name, rawQuery);
     matches.push({ ...result, match });
   });
 
+  // sort each item by match then get the highest match
   const bestMatch = matches.sort((a, b) => b.match - a.match)[0];
 
-  return bestMatch;
+  return bestMatch || undefined;
 };
 
 export const searchMovies = async (query) => {
@@ -60,6 +75,8 @@ export const getTrending = async (type) => {
 };
 
 export const getInfo = async (id, type) => {
+  if (!id) throw new Error("Id is required");
+  if (!type) throw new Error("Type is required");
   //get info from tmdb using axios
   const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${tmdb_api_key}&language=en-US`;
   const { data } = await axios.get(url);

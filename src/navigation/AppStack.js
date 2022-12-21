@@ -4,7 +4,7 @@ import {
   useNavigationContainerRef,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen } from "../screens";
+import { HomeScreen, InfoScreen } from "../screens";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
@@ -56,6 +56,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Info" component={InfoScreen} />
       </Stack.Navigator>
       <NavBar
         currentRoute={routeNameRef === undefined ? "loading" : routeNameRef}

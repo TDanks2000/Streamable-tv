@@ -4,8 +4,8 @@ import { Focusable } from "../Shared";
 export const CardContainer = styled.View`
   margin-left: ${({ index }) => (index === 0 ? 0 : 20)}px;
   overflow: hidden;
-  width: 115px;
-  height: 155px;
+  width: 155px;
+  height: 220px;
 `;
 
 export const CardBackground = styled.ImageBackground`
