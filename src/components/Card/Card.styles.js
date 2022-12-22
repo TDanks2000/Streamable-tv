@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Focusable } from "../Shared";
 
 export const CardContainer = styled.View`
   margin-left: ${({ index }) => (index === 0 ? 0 : 20)}px;

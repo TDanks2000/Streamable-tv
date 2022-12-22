@@ -6,10 +6,10 @@ import {
   InfoTop,
   MetaInformation,
 } from "../../components";
-import Similar from "../../containers/Similar";
 import { api } from "../../utils";
 import { Container, ScrollView } from "../screen.styles";
 import { useBreakpoints } from "../../hooks";
+import { Row } from "../../containers";
 
 const InfoScreen = ({ route }) => {
   const { isMobile } = useBreakpoints();
@@ -28,7 +28,16 @@ const InfoScreen = ({ route }) => {
         <InfoTop {...data} type={type} isMobile={isMobile} />
         <MetaInformation {...data} type={type} isMobile={isMobile} />
         <Description desc={data?.overview} isMobile={isMobile} />
-        <Similar data={data?.similar?.results} isMobile={isMobile} />
+        <Row
+          data={data?.recommendations?.results}
+          isMobile={isMobile}
+          title={"You might also like"}
+        />
+        <Row
+          data={data?.similar?.results}
+          isMobile={isMobile}
+          title={"Similar"}
+        />
       </ScrollView>
     </Container>
   );

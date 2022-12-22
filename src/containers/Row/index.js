@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 import { Container, Title } from "../container.styles";
 import { useFocusEffect } from "@react-navigation/native";
 
-const Similar = ({ data }) => {
+const Row = ({ data, title }) => {
   if (data?.length === 0) return null;
 
   useFocusEffect(
@@ -19,7 +19,7 @@ const Similar = ({ data }) => {
 
   return (
     <Container>
-      <Title>You might also like</Title>
+      <Title>{title}</Title>
       <FlatList
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -31,4 +31,4 @@ const Similar = ({ data }) => {
   );
 };
 
-export default Similar;
+export default Row;

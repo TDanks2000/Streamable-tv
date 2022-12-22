@@ -78,7 +78,7 @@ export const getInfo = async (id, type) => {
   if (!id) throw new Error("Id is required");
   if (!type) throw new Error("Type is required");
   //get info from tmdb using axios
-  const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${tmdb_api_key}&language=en-US&append_to_response=videos,images,credits,external_ids,keywords,release_dates,translations,watch/providers,similar`;
+  const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${tmdb_api_key}&language=en-US&append_to_response=videos,images,credits,media_type,external_ids,recommendations,keywords,release_dates,translations,watch/providers,similar`;
   console.log(url);
   const { data } = await axios.get(url);
   return data;

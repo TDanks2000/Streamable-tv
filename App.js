@@ -7,10 +7,16 @@ import {
   OpenSans_400Regular,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
-import { useState } from "react";
-import { TVEventHandler, useTVEventHandler } from "react-native";
+import { useEffect, useState } from "react";
+import { Platform, TVEventHandler, useTVEventHandler } from "react-native";
 
 const App = () => {
+  const [lastEventType, setLastEventType] = useState("");
+  const myTVEventHandler = (evt) => {
+    setLastEventType(evt.eventType);
+  };
+  useTVEventHandler(myTVEventHandler);
+
   const [hiddenStatusBar, setHiddenStatusBar] = useState(false);
 
   let [fontsLoaded] = useFonts({

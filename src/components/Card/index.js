@@ -11,23 +11,24 @@ import { Focusable } from "../";
 import { api, utils } from "../../utils";
 
 const Card = (props) => {
-  let { image, type, title, index, url, poster_path } = props;
+  let { image, type, media_type, title, index, url, poster_path } = props;
   const navigation = useNavigation();
+  const actualType = utils.getType(media_type || type);
 
   const handlePress = async (event) => {
-    const data = await api.findMatchFromTitle(title, type);
+    const data = await api.findMatchFromTitle(title, actualType);
 
-    navigation.navigate("Info", { id: data?.id, type: utils.getType(type) });
+    navigation.navigate("Info", {
+      id: data?.id,
+      type: actualType,
+    });
   };
 
   image =
-    poster_path !== undefined
-      ? utils.getPosterUrl(poster_path, "original")
-      : image;
+    poster_path !== undefined ? utils.getPosterUrl(poster_path, "w342") : image;
 
-  console.log({ image, poster_path });
   return (
-    <CardContainer index={index}>
+    <CardContainer index={index} focusable={true}>
       <Focusable onPress={handlePress}>
         <CardBackground source={{ uri: image }}>
           <CardContent>

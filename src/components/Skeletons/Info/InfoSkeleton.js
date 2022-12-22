@@ -40,12 +40,11 @@ const InfoSkeleton = () => {
     <Container style={{ opacity }}>
       <ImageContainer />
       <PosterContainer>
-        <PosterImageWrapper></PosterImageWrapper>
+        <PosterImageWrapper />
         <TopWrapper>
           <TopTitle />
           <TopSubTitle />
           <TopButtons>
-            <TopPlayButton />
             <TopPlayButton />
           </TopButtons>
         </TopWrapper>
